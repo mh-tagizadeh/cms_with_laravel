@@ -22,6 +22,11 @@
                         <td>
                             {{ $categorie->name }}
                         </td>
+                        <td>
+                            <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-info btn-sm">
+                                Edit
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
