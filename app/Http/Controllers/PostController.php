@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        return view('posts.index')->with('posts', Post::all());
     }
 
     /**
@@ -39,14 +39,14 @@ class PostController extends Controller
     {
 
         // upload the image storage
-        $image = $request->image->store('posts');
+        $image = $request->image->store('post');
 
         // create the post 
         Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
-            'image' => $request->image
+            'image' => $image
         ]);
 
         // flash session
