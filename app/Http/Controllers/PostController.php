@@ -11,6 +11,20 @@ use App\Category;
 
 class PostController extends Controller
 {
+
+
+    public function __construct() 
+    {
+        session()->flash('error', 'You need to add categories to able to create a post.');
+        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
+    }
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
