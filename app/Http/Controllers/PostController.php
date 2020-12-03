@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Post;
-use Illuminate\Support\Facades\Storage;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create')->with('categories', Category::all());
     }
 
     /**
@@ -51,6 +51,7 @@ class PostController extends Controller
             'content' => $request->content,
             'published_at' => $request->published_at,
             'image' => $image,
+            'category_id' => $request->category,
         ]);
 
         // flash session
@@ -79,7 +80,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post);
+        return view('posts.create')->with('post', $post)->with('categories', Category::all());
     }
 
     /**
@@ -98,7 +99,7 @@ class PostController extends Controller
             // upload it 
             $image = $request->image->store('post');
             // delete old image
-            Storage::delete($post->image);
+            $post->deleteImage();
 
             $data['image'] = $image;
         }
@@ -125,7 +126,7 @@ class PostController extends Controller
         $post = Post::withTrashed()->where('id', $id)->firstOrFail();
 
         if ($post->trashed()) {
-            Storage::delete($post->image);
+            $post->deleteImage();
             $post->forceDelete();
         } else {
             $post->delete();
@@ -144,8 +145,23 @@ class PostController extends Controller
      */
     public function trashed()
     {
-        $trashed = Post::withTrashed()->get();
+        $trashed = Post::onlyTrashed()->get();
 
         return view('posts.index')->with('posts',$trashed);
     }
+    
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+
+        $post->restore();
+
+        session()->flash('success', 'Post restore successfully.');
+
+        return redirect()->back();
+    }
+    
+
+
 }

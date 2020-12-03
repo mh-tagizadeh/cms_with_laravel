@@ -16,12 +16,17 @@
         <table class="table">
             <thead>
                 <th>Name</th>
+                <th>Posts count</th>
+                <th></th>
             </thead>
             <tbody>
                 @foreach ($categories as $categorie)
                     <tr>
                         <td>
                             {{ $categorie->name }}
+                        </td>
+                        <td>
+                            {{ $categorie->posts->count() }}
                         </td>
                         <td>
                             <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-info btn-sm">
