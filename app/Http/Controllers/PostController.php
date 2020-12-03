@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Post;
+use App\Tag;
 use App\Category;
 
 class PostController extends Controller
@@ -15,7 +16,7 @@ class PostController extends Controller
 
     public function __construct() 
     {
-        session()->flash('error', 'You need to add categories to able to create a post.');
+         
         $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
     }
 
@@ -42,7 +43,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories', Category::all());
+        return view('posts.create')->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -59,7 +60,7 @@ class PostController extends Controller
 
         
         // create the post 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
@@ -68,6 +69,10 @@ class PostController extends Controller
             'category_id' => $request->category,
         ]);
 
+
+        if ($request->tags) {
+            $post->tags()->sync($request->tags);
+        }
         // flash session
         session()->flash('success', 'Post created successfully.');
 
@@ -94,7 +99,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post)->with('categories', Category::all());
+        return view('posts.create')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
