@@ -32,3 +32,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('restore-post/{post}', 'PostController@restore')->name('restore-posts');
     
 });
+
+
+
+    
+Route::middleware(['admin', 'auth'])->group(function ()
+{
+    Route::get('users', 'UsersController@index' )->name('users.index');
+});
