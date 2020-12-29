@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
+use App\User;
 
 class Post extends Model
 {
@@ -13,7 +14,7 @@ class Post extends Model
     use softDeletes;
 
     protected $fillable = [
-        'title', 'description' , 'content', 'image', 'pubished_at', 'category_id'
+        'title', 'description' , 'content', 'image', 'pubished_at', 'category_id', 'user_id'
     ];
 
 
@@ -38,4 +39,8 @@ class Post extends Model
         return in_array($tagId, $this->tags->pluck('id')->toArray());
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

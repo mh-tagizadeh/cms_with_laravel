@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Post;
 use App\Tag;
 use App\Category;
+use Illuminate\Support\Facades\Hash;
 
 class PostsTableSeeder extends Seeder
 {
@@ -17,19 +18,36 @@ class PostsTableSeeder extends Seeder
         $category1 = Category::create([
             'name' => 'News'
         ]);
+
+
+        $author1 = App\User::create([
+            'name' => 'John Doe',
+            'email' => 'john@doe.com',
+            'password' => Hash::make('password')
+        ]);
+
+
+
+        $author2 = App\User::create([
+            'name' => 'Jahn Doe',
+            'email' => 'jahn@doe.com',
+            'password' => Hash::make('password')
+        ]);
+
         $post1 = Post::create([
             'title' => 'a',
             'description' => 'a',
             'content' => 'a',
             'category_id' => $category1->id,
-            'image' => 'storage/post/1.jpg'
+            'image' => 'storage/post/1.jpg',
+            'user_id' => $author1->id
         ]);
 
         $category2 = Category::create([
             'name' => 'Programming'
         ]);
 
-        $post2 = Post::create([
+        $post2 = $author2->posts()->create([
             'title' => 'b',
             'description' => 'b',
             'content' => 'b',
@@ -37,7 +55,7 @@ class PostsTableSeeder extends Seeder
             'image' => '/storage/post/2.jpg'
         ]);
 
-         $post3 = Post::create([
+         $post3 = $author1->posts()->create([
             'title' => 'b',
             'description' => 'b',
             'content' => 'b',
@@ -45,7 +63,7 @@ class PostsTableSeeder extends Seeder
             'image' => 'storage/post/3.jpg'
         ]);
 
-         $post4 = Post::create([
+         $post4 = $author2->posts()->create([
             'title' => 'b',
             'description' => 'b',
             'content' => 'b',

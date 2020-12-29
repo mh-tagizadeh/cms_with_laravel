@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Blog\PostsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +12,8 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('blog/posts/{post}', [PostsController::class, 'show'])->name('blog.show');
 
 Auth::routes();
 
