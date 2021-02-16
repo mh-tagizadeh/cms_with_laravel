@@ -42,7 +42,7 @@ class PostsTableSeeder extends Seeder
             Facilisis leo vel fringilla est. Convallis posuere morbi leo urna molestie. Auctor augue mauris augue neque gravida. Nunc id cursus metus aliquam eleifend mi in nulla. Vestibulum morbi blandit cursus risus at ultrices mi tempus. Ac tincidunt vitae semper quis lectus nulla at. Purus semper eget duis at. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Egestas pretium aenean pharetra magna. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Eget arcu dictum varius duis at consectetur lorem. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Est ultricies integer quis auctor elit sed vulputate mi sit.
             Nibh venenatis cras sed felis eget velit aliquet sagittis id. Eget nullam non nisi est sit amet. Vel pretium lectus quam id leo. Senectus et netus et malesuada. Et tortor at risus viverra adipiscing at in. In mollis nunc sed id. Malesuada fames ac turpis egestas integer eget. Massa ultricies mi quis hendrerit. Sem integer vitae justo eget magna. Aliquam etiam erat velit scelerisque in dictum non consectetur a. Erat imperdiet sed euismod nisi porta. Elementum curabitur vitae nunc sed velit dignissim sodales.',
             'category_id' => $category1->id,
-            'image' => 'storage/Eminem.jpg',
+            'image' => 'img/Eminem.jpg',
             'user_id' => $author1->id
         ]);
 
@@ -58,7 +58,7 @@ class PostsTableSeeder extends Seeder
             Facilisis leo vel fringilla est. Convallis posuere morbi leo urna molestie. Auctor augue mauris augue neque gravida. Nunc id cursus metus aliquam eleifend mi in nulla. Vestibulum morbi blandit cursus risus at ultrices mi tempus. Ac tincidunt vitae semper quis lectus nulla at. Purus semper eget duis at. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Egestas pretium aenean pharetra magna. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Eget arcu dictum varius duis at consectetur lorem. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Est ultricies integer quis auctor elit sed vulputate mi sit.
             Nibh venenatis cras sed felis eget velit aliquet sagittis id. Eget nullam non nisi est sit amet. Vel pretium lectus quam id leo. Senectus et netus et malesuada. Et tortor at risus viverra adipiscing at in. In mollis nunc sed id. Malesuada fames ac turpis egestas integer eget. Massa ultricies mi quis hendrerit. Sem integer vitae justo eget magna. Aliquam etiam erat velit scelerisque in dictum non consectetur a. Erat imperdiet sed euismod nisi porta. Elementum curabitur vitae nunc sed velit dignissim sodales.',
             'category_id' => $category2->id,
-            'image' => 'storage/Logic.jpg'
+            'image' => 'img/Logic.jpg'
         ]);
 
          $post3 = $author1->posts()->create([
@@ -69,7 +69,7 @@ class PostsTableSeeder extends Seeder
             Facilisis leo vel fringilla est. Convallis posuere morbi leo urna molestie. Auctor augue mauris augue neque gravida. Nunc id cursus metus aliquam eleifend mi in nulla. Vestibulum morbi blandit cursus risus at ultrices mi tempus. Ac tincidunt vitae semper quis lectus nulla at. Purus semper eget duis at. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Egestas pretium aenean pharetra magna. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Eget arcu dictum varius duis at consectetur lorem. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Est ultricies integer quis auctor elit sed vulputate mi sit.
             Nibh venenatis cras sed felis eget velit aliquet sagittis id. Eget nullam non nisi est sit amet. Vel pretium lectus quam id leo. Senectus et netus et malesuada. Et tortor at risus viverra adipiscing at in. In mollis nunc sed id. Malesuada fames ac turpis egestas integer eget. Massa ultricies mi quis hendrerit. Sem integer vitae justo eget magna. Aliquam etiam erat velit scelerisque in dictum non consectetur a. Erat imperdiet sed euismod nisi porta. Elementum curabitur vitae nunc sed velit dignissim sodales.',
             'category_id' => $category1->id,
-            'image' => 'storage/NF.jpg',
+            'image' => 'img/NF.jpg',
         ]);
 
          $post4 = $author2->posts()->create([
@@ -80,7 +80,7 @@ class PostsTableSeeder extends Seeder
             Facilisis leo vel fringilla est. Convallis posuere morbi leo urna molestie. Auctor augue mauris augue neque gravida. Nunc id cursus metus aliquam eleifend mi in nulla. Vestibulum morbi blandit cursus risus at ultrices mi tempus. Ac tincidunt vitae semper quis lectus nulla at. Purus semper eget duis at. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Egestas pretium aenean pharetra magna. Nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi. Eget arcu dictum varius duis at consectetur lorem. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Est ultricies integer quis auctor elit sed vulputate mi sit.
             Nibh venenatis cras sed felis eget velit aliquet sagittis id. Eget nullam non nisi est sit amet. Vel pretium lectus quam id leo. Senectus et netus et malesuada. Et tortor at risus viverra adipiscing at in. In mollis nunc sed id. Malesuada fames ac turpis egestas integer eget. Massa ultricies mi quis hendrerit. Sem integer vitae justo eget magna. Aliquam etiam erat velit scelerisque in dictum non consectetur a. Erat imperdiet sed euismod nisi porta. Elementum curabitur vitae nunc sed velit dignissim sodales.',
             'category_id' => $category2->id,
-            'image' => 'storage/G-eazy.jpg'
+            'image' => 'img/G-eazy.jpg'
         ]);
 
         $tag1 = Tag::create([
