@@ -47,7 +47,7 @@ class PostsTableSeeder extends Seeder
         ]);
 
         $category2 = Category::create([
-            'name' => 'Programming'
+            'name' => 'Rapper'
         ]);
 
         $post2 = $author2->posts()->create([
