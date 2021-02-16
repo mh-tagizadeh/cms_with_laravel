@@ -21,16 +21,16 @@ class PostsTableSeeder extends Seeder
 
 
         $author1 = App\User::create([
-            'name' => 'John Doe',
-            'email' => 'john@doe.com',
+            'name' => 'John Doe2',
+            'email' => 'john@doe2.com',
             'password' => Hash::make('password')
         ]);
 
 
 
         $author2 = App\User::create([
-            'name' => 'Jahn Doe',
-            'email' => 'jahn@doe.com',
+            'name' => 'Jahn Doe1',
+            'email' => 'jahn@doe1.com',
             'password' => Hash::make('password')
         ]);
 
@@ -39,7 +39,7 @@ class PostsTableSeeder extends Seeder
             'description' => 'a',
             'content' => 'a',
             'category_id' => $category1->id,
-            'image' => 'storage/post/1.jpg',
+            'image' => 'storage/1.jpg',
             'user_id' => $author1->id
         ]);
 
@@ -52,7 +52,7 @@ class PostsTableSeeder extends Seeder
             'description' => 'b',
             'content' => 'b',
             'category_id' => $category2->id,
-            'image' => '/storage/post/2.jpg'
+            'image' => 'storage/2.jpg'
         ]);
 
          $post3 = $author1->posts()->create([
@@ -60,7 +60,7 @@ class PostsTableSeeder extends Seeder
             'description' => 'b',
             'content' => 'b',
             'category_id' => $category1->id,
-            'image' => 'storage/post/3.jpg'
+            'image' => 'storage/3.jpg',
         ]);
 
          $post4 = $author2->posts()->create([
@@ -68,7 +68,7 @@ class PostsTableSeeder extends Seeder
             'description' => 'b',
             'content' => 'b',
             'category_id' => $category2->id,
-            'image' => '/storage/post/4.jpg'
+            'image' => 'storage/4.jpg'
         ]);
 
         $tag1 = Tag::create([

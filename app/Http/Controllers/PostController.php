@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Tag;
 use App\Category;
@@ -56,7 +57,12 @@ class PostController extends Controller
     {
 
         // upload the image storage
-        $image = $request->image->store('post');
+        $image = $request->image->store('public');
+
+        $image_name = explode("public/", $image);
+
+        $url = "storage/".$image_name[1];
+        
 
         
         // create the post 
@@ -65,7 +71,7 @@ class PostController extends Controller
             'description' => $request->description,
             'content' => $request->content,
             'published_at' => $request->published_at,
-            'image' => $image,
+            'image' => $url,
             'category_id' => $request->category,
             'user_id' => auth()->user()->id
         ]);
