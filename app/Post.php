@@ -57,12 +57,17 @@ class Post extends Model
         $search = request()->query('search');
 
 
+        if ($search == '')
+        {
+            return $query;
+        }
+
+
         if (!$search) {
             return $query->published();
         }
 
-        return $query->published()->where('title', 'LIKE', "%{$search}%");
-
+        return $query->where('title', 'LIKE', "%{$search}%");
     }
 
 }
