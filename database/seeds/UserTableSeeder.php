@@ -1,5 +1,7 @@
 <?php
 use App\User;
+use App\Post;
+use App\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,8 +14,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $user = User::where('email', 'haji@haji.com')->first();
+        
+        $user = User::where('email', 'admin@admin.com')->first();
 
         if (!$user) {
             User::create([
@@ -23,5 +25,10 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('password'),
             ]);
         }
+
+
+        factory(User::class, 50)->create()->each(function ($user) {
+            $user->posts()->save(factory(Post::class)->make());
+        });
     }
 }
