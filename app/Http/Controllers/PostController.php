@@ -122,11 +122,14 @@ class PostController extends Controller
         // check if new image 
         if ($request->hasFile('image')) {
             // upload it 
-            $image = $request->image->store('post');
+            $image = $request->image->store('public');
+
+            $url = Storage::url($image);
+
             // delete old image
             $post->deleteImage();
 
-            $data['image'] = $image;
+            $data['image'] = $url;
         }
 
         // update attribute 
