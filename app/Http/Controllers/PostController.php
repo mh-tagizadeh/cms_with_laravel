@@ -59,9 +59,8 @@ class PostController extends Controller
         // upload the image storage
         $image = $request->image->store('public');
 
-        $image_name = explode("public/", $image);
 
-        $url = "storage/".$image_name[1];
+        $url = Storage::url($image);
         
 
         
